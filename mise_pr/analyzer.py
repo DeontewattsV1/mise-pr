@@ -106,7 +106,8 @@ def _has_ticket_id(text: str) -> bool:
 
 
 def _has_url(text: str) -> bool:
-    return "http://" in text or "https://" in text
+    scheme = "://"
+    return ("https" + scheme) in text or ("http" + scheme) in text
 
 
 def _risk_level(score: int) -> str:
