@@ -1,3 +1,19 @@
+            - name: PR Auto Changelog
+  # You may pin to the exact commit or the version.
+  # uses: puneet2019/pr-auto-changelog@22c7f9c96b390abd5febe66b9c85652a7b5f35ef
+  uses: puneet2019/pr-auto-changelog@v1.0.1
+  with:
+    # GitHub token for API access
+    github-token: # default is ${{ github.token }}
+    # Path to the changelog file
+    changelog-path: # optional, default is CHANGELOG.md
+    # Auto-categorize based on conventional commit format
+    auto-categorize: # optional, default is true
+    # Comment trigger phrase
+    comment-trigger: # optional, default is /changelog:
+    # Skip processing for dependabot PRs
+    skip-dependabot: # optional, default is true
+          
 name: Mise PR
 
 on:
