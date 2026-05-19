@@ -56,7 +56,7 @@ runs:
         INPUT_JSON_OUTPUT: ${{ inputs.json-output }}
         INPUT_FAIL_ON: ${{ inputs.fail-on }}
       run: |
-        mise-pr analyze \
+        mise-pr \
           --base "$INPUT_BASE_REF" \
           --head "$INPUT_HEAD_REF" \
           --title "$PR_TITLE" \
