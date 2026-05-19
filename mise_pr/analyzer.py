@@ -89,15 +89,16 @@ def _has_closing_ref(text: str) -> bool:
 
 
 def _has_ticket_id(text: str) -> bool:
+    upper = text.upper()
     i = 0
-    while i < len(text):
-        if text[i].isupper():
+    while i < len(upper):
+        if upper[i].isupper():
             j = i
-            while j < len(text) and text[j].isupper():
+            while j < len(upper) and upper[j].isupper():
                 j += 1
-            if j - i >= 2 and j < len(text) and text[j] == "-":
+            if j - i >= 2 and j < len(upper) and upper[j] == "-":
                 k = j + 1
-                if k < len(text) and text[k].isdigit():
+                if k < len(upper) and upper[k].isdigit():
                     return True
             i = j
         else:
@@ -107,7 +108,8 @@ def _has_ticket_id(text: str) -> bool:
 
 def _has_url(text: str) -> bool:
     scheme = "://"
-    return ("https" + scheme) in text or ("http" + scheme) in text
+    lower = text.lower()
+    return ("https" + scheme) in lower or ("http" + scheme) in lower
 
 
 def _risk_level(score: int) -> str:
