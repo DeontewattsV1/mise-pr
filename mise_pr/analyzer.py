@@ -5,7 +5,9 @@ import re
 
 from .models import FileKind, Policy, PullRequestContext, ReviewPacket
 
-_ISSUE_LINK_RE = re.compile(r"(?i)(fixe?s|close?s|resolve?s)\s+#\d+|[A-Z]{2,}-\d+|https?://")
+_CLOSING_REF_RE = re.compile(r"(?i)(?:fixe?s|close?s|resolve?s)\s+#\d+")
+_TICKET_ID_RE = re.compile(r"[A-Z]{2,}-\d+")
+_URL_RE = re.compile(r"https?://")
 
 
 def analyze_pull_request(*, files: list, context: PullRequestContext, policy: Policy) -> ReviewPacket:
@@ -48,7 +50,7 @@ def analyze_pull_request(*, files: list, context: PullRequestContext, policy: Po
         recommendations.append("Add: what changed, why it changed, how it was tested, and rollback notes.")
         score += 8
 
-    if policy.require_issue_link and not _ISSUE_LINK_RE.search(description_text):
+    if policy.require_issue_link and not _has_issue_link(description_text):
         warnings.append("No linked issue, ticket, URL, or closing reference found.")
         recommendations.append("Link the issue/spec so reviewers can inspect original intent.")
         score += 7
@@ -64,6 +66,10 @@ def analyze_pull_request(*, files: list, context: PullRequestContext, policy: Po
     attention_budget_minutes = _attention_budget(files_count=len(non_generated_files), churn=total_churn, score=score)
 
     return ReviewPacket(context=context, files=files, risk_score=score, risk_level=risk_level, blockers=blockers, warnings=warnings, recommendations=recommendations, attention_budget_minutes=attention_budget_minutes)
+
+
+def _has_issue_link(text: str) -> bool:
+    return bool(_CLOSING_REF_RE.search(text) or _TICKET_ID_RE.search(text) or _URL_RE.search(text))
 
 
 def _risk_level(score: int) -> str:
