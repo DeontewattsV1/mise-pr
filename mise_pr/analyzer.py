@@ -89,16 +89,15 @@ def _has_closing_ref(text: str) -> bool:
 
 
 def _has_ticket_id(text: str) -> bool:
-    upper = text.upper()
     i = 0
-    while i < len(upper):
-        if upper[i].isupper():
+    while i < len(text):
+        if text[i].isalpha():
             j = i
-            while j < len(upper) and upper[j].isupper():
+            while j < len(text) and text[j].isalpha():
                 j += 1
-            if j - i >= 2 and j < len(upper) and upper[j] == "-":
+            if j - i >= 2 and j < len(text) and text[j] == "-":
                 k = j + 1
-                if k < len(upper) and upper[k].isdigit():
+                if k < len(text) and text[k].isdigit():
                     return True
             i = j
         else:
