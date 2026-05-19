@@ -1,0 +1,33 @@
+max_files: 12
+max_churn: 450
+max_single_file_churn: 180
+require_issue_link: true
+require_tests_for_source: true
+require_description: true
+risky_path_patterns:
+  - auth
+  - security
+  - payment
+  - billing
+  - permission
+  - migration
+  - infra
+  - terraform
+  - k8s
+  - docker
+  - github/workflows
+  - secrets
+  - crypto
+  - sql
+  - database
+generated_path_patterns:
+  - dist/
+  - build/
+  - coverage/
+  - node_modules/
+  - vendor/
+  - .next/
+  - package-lock.json
+  - pnpm-lock.yaml
+  - yarn.lock
+  - poetry.lock
