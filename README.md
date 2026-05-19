@@ -9,7 +9,6 @@
 <p align="center">
   <a href="docs/marketplace/MARKETPLACE_LISTING.md"><img alt="Marketplace Ready" src="https://img.shields.io/badge/GitHub%20Marketplace-ready-black?logo=github"></a>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-green"></a>
-  <a href="docs/product-hunt/product-hunt-draft.md"><img alt="Product Hunt Ready" src="https://img.shields.io/badge/Product%20Hunt-ready-orange?logo=producthunt"></a>
 </p>
 
 ---
@@ -119,7 +118,8 @@ GitHub Marketplace publishing requires a GitHub Release where the owner selects 
 
 ## Launch assets
 
-- Product Hunt draft: [`docs/product-hunt/product-hunt-draft.md`](docs/product-hunt/product-hunt-draft.md)
+The full Product Hunt launch kit, gallery images, demo GIF, copy, and expanded visuals are included in the downloadable v4 package.
+
 - Marketplace listing: [`docs/marketplace/MARKETPLACE_LISTING.md`](docs/marketplace/MARKETPLACE_LISTING.md)
 - Release notes: [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md)
 
