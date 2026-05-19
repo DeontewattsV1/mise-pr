@@ -20,24 +20,9 @@
 
 It is **not another AI code reviewer**. It prepares the work before review begins.
 
-Mise PR checks:
+Mise PR checks PR size, churn, risky paths, missing tests, weak descriptions, issue/spec links, changed-file shape, and estimated reviewer attention budget.
 
-- PR size and churn
-- risky paths such as auth, payments, infra, migrations, secrets, and workflows
-- missing tests
-- weak PR descriptions
-- missing issue/spec links
-- changed-file shape
-- estimated reviewer attention budget
-
-It outputs:
-
-- one Markdown packet for human reviewers
-- one JSON packet for AI agents, CI pipelines, and enterprise automation
-
-<p align="center">
-  <img src="docs/assets/review-packet-preview.svg" alt="Mise PR review packet preview" width="860" />
-</p>
+It outputs one Markdown packet for human reviewers and one JSON packet for AI agents, CI pipelines, and enterprise automation.
 
 ## Why this exists
 
@@ -123,10 +108,6 @@ risky_path_patterns:
 ```
 
 ## Architecture
-
-<p align="center">
-  <img src="docs/assets/mise-pr-architecture.svg" alt="Mise PR architecture" width="860" />
-</p>
 
 Mise PR runs inside GitHub Actions. It reads local git metadata and the pull request event payload, scores review readiness, then writes Markdown and JSON outputs. No LLM is required. No source code is sent to an external service by default.
 
