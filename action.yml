@@ -46,9 +46,6 @@ runs:
     - name: Install Mise PR from action package
       shell: bash
       run: python -m pip install "${{ github.action_path }}"
-    - name: Extract pull request body
-      shell: bash
-      run: python -m mise_pr.pr_body
     - name: Generate review packet
       shell: bash
       env:
@@ -58,7 +55,6 @@ runs:
           --base "${{ inputs.base-ref }}" \
           --head "${{ inputs.head-ref }}" \
           --title "$PR_TITLE" \
-          --body-file ".mise-pr-body.md" \
           --repository "${{ github.repository }}" \
           --author "${{ github.actor }}" \
           --output "${{ inputs.output }}" \
