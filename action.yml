@@ -6,7 +6,7 @@ branding:
   color: "blue"
 inputs:
   base-ref:
-    description: "Base git ref used for comparison. Example: origin/main or origin/<github.base_ref>."
+    description: "Base git ref used for comparison. Example: origin/main or origin/<base_branch>."
     required: false
     default: "origin/main"
   head-ref:
