@@ -23,3 +23,11 @@ jobs:
           head-ref: HEAD
           fail-on: red
           comment: true
+            - name: Config for Actions
+  # You may pin to the exact commit or the version.
+  # uses: Monorepo-Actions/config-for-actions@47b0824054f9eef4a5d1b2df11f4c76b9b0d9117
+  uses: Monorepo-Actions/config-for-actions@v1.0.0
+  with:
+    # The configuration files.
+    config_files: # default is .github/config-for-actions.yml
+          
