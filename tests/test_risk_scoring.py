@@ -225,6 +225,7 @@ class TestScoreComponents:
         ctx = _minimal_context()
         policy = _permissive_policy()
 
+        files_3 = [_make_file(path=f"src/f{i}.py", additions=0, deletions=0) for i in range(1)]
         # Both lists have 11 total non-generated files so the file_count
         # component is identical and only the risky component varies.
         files_3 = [_make_file(path=f"src/f{i}.py", additions=0, deletions=0) for i in range(8)]
@@ -245,6 +246,10 @@ class TestScoreComponents:
             for i in range(10)
         ]
 
+        analyze_pull_request(files=files_3, context=ctx, policy=policy)
+        analyze_pull_request(files=files_10, context=ctx, policy=policy)
+
+        assert min(18, 3 * 6) == min(18, 10 * 6) == 18
         pkt_3 = analyze_pull_request(files=files_3, context=ctx, policy=policy)
         pkt_10 = analyze_pull_request(files=files_10, context=ctx, policy=policy)
 
@@ -310,6 +315,9 @@ class TestAnalyzePullRequestIntegration:
         files = [
             _make_file(path=f"src/f{i}.py", additions=50, deletions=30) for i in range(8)
         ]
+        pkt = analyze_pull_request(files=files, context=ctx, policy=policy)
+        expected = _attention_budget(
+            files_count=len(files),
         files.append(_make_file(
             path="generated/schema.py", additions=200,
             deletions=0, kind=FileKind.GENERATED,
