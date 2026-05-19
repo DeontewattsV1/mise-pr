@@ -225,7 +225,12 @@ class TestScoreComponents:
         ctx = _minimal_context()
         policy = _permissive_policy()
 
-        files_3 = [_make_file(path=f"src/f{i}.py", additions=0, deletions=0) for i in range(1)]
+        # Pad both lists to the same total non-generated file count (11)
+        # so the file-count score component is identical.
+        files_3 = [
+            _make_file(path=f"src/f{i}.py", additions=0, deletions=0)
+            for i in range(8)
+        ]
         files_3 += [
             _make_file(
                 path=f"src/auth{i}.py", additions=0, deletions=0,
@@ -234,7 +239,10 @@ class TestScoreComponents:
             for i in range(3)
         ]
 
-        files_10 = [_make_file(path=f"src/f{i}.py", additions=0, deletions=0) for i in range(1)]
+        files_10 = [
+            _make_file(path=f"src/f{i}.py", additions=0, deletions=0)
+            for i in range(1)
+        ]
         files_10 += [
             _make_file(
                 path=f"src/auth{i}.py", additions=0, deletions=0,
@@ -243,10 +251,10 @@ class TestScoreComponents:
             for i in range(10)
         ]
 
-        analyze_pull_request(files=files_3, context=ctx, policy=policy)
-        analyze_pull_request(files=files_10, context=ctx, policy=policy)
+        pkt_3 = analyze_pull_request(files=files_3, context=ctx, policy=policy)
+        pkt_10 = analyze_pull_request(files=files_10, context=ctx, policy=policy)
 
-        assert min(18, 3 * 6) == min(18, 10 * 6) == 18
+        assert pkt_3.risk_score == pkt_10.risk_score
 
 
 class TestAnalyzePullRequestIntegration:
@@ -306,11 +314,19 @@ class TestAnalyzePullRequestIntegration:
         ctx = _minimal_context()
         policy = _permissive_policy()
         files = [
-            _make_file(path=f"src/f{i}.py", additions=50, deletions=30) for i in range(8)
+            _make_file(path=f"src/f{i}.py", additions=50, deletions=30)
+            for i in range(7)
         ]
+        files.append(
+            _make_file(
+                path="dist/bundle.js", additions=100, deletions=0,
+                kind=FileKind.GENERATED,
+            )
+        )
+        non_generated = [f for f in files if f.kind != FileKind.GENERATED]
         pkt = analyze_pull_request(files=files, context=ctx, policy=policy)
         expected = _attention_budget(
-            files_count=len(files),
+            files_count=len(non_generated),
             churn=sum(f.churn for f in files),
             score=pkt.risk_score,
         )
