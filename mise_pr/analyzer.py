@@ -1,11 +1,10 @@
 from __future__ import annotations
 
 import math
-import re
 
 from .models import FileKind, Policy, PullRequestContext, ReviewPacket
 
-_ISSUE_LINK_RE = re.compile(r"(?i)(fixe?s|close?s|resolve?s)\s+#\d+|[A-Z]{2,}-\d+|https?://")
+_CLOSING_KEYWORDS = ("fixes", "fixs", "closes", "closs", "resolves", "resolvs")
 
 
 def analyze_pull_request(*, files: list, context: PullRequestContext, policy: Policy) -> ReviewPacket:
@@ -48,7 +47,7 @@ def analyze_pull_request(*, files: list, context: PullRequestContext, policy: Po
         recommendations.append("Add: what changed, why it changed, how it was tested, and rollback notes.")
         score += 8
 
-    if policy.require_issue_link and not _ISSUE_LINK_RE.search(description_text):
+    if policy.require_issue_link and not _has_issue_link(description_text):
         warnings.append("No linked issue, ticket, URL, or closing reference found.")
         recommendations.append("Link the issue/spec so reviewers can inspect original intent.")
         score += 7
@@ -64,6 +63,51 @@ def analyze_pull_request(*, files: list, context: PullRequestContext, policy: Po
     attention_budget_minutes = _attention_budget(files_count=len(non_generated_files), churn=total_churn, score=score)
 
     return ReviewPacket(context=context, files=files, risk_score=score, risk_level=risk_level, blockers=blockers, warnings=warnings, recommendations=recommendations, attention_budget_minutes=attention_budget_minutes)
+
+
+def _has_issue_link(text: str) -> bool:
+    return _has_closing_ref(text) or _has_ticket_id(text) or _has_url(text)
+
+
+def _has_closing_ref(text: str) -> bool:
+    lower = text.lower()
+    for keyword in _CLOSING_KEYWORDS:
+        start = 0
+        while True:
+            pos = lower.find(keyword, start)
+            if pos == -1:
+                break
+            after = pos + len(keyword)
+            while after < len(lower) and lower[after] in " \t\n\r":
+                after += 1
+            if after < len(lower) and lower[after] == "#":
+                after += 1
+                if after < len(lower) and lower[after].isdigit():
+                    return True
+            start = pos + 1
+    return False
+
+
+def _has_ticket_id(text: str) -> bool:
+    i = 0
+    while i < len(text):
+        if text[i].isupper():
+            j = i
+            while j < len(text) and text[j].isupper():
+                j += 1
+            if j - i >= 2 and j < len(text) and text[j] == "-":
+                k = j + 1
+                if k < len(text) and text[k].isdigit():
+                    return True
+            i = j
+        else:
+            i += 1
+    return False
+
+
+def _has_url(text: str) -> bool:
+    scheme = "://"
+    return ("https" + scheme) in text or ("http" + scheme) in text
 
 
 def _risk_level(score: int) -> str:
