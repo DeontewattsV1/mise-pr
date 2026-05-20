@@ -1,19 +1,3 @@
-            - name: PR Auto Changelog
-  # You may pin to the exact commit or the version.
-  # uses: puneet2019/pr-auto-changelog@22c7f9c96b390abd5febe66b9c85652a7b5f35ef
-  uses: puneet2019/pr-auto-changelog@v1.0.1
-  with:
-    # GitHub token for API access
-    github-token: # default is ${{ github.token }}
-    # Path to the changelog file
-    changelog-path: # optional, default is CHANGELOG.md
-    # Auto-categorize based on conventional commit format
-    auto-categorize: # optional, default is true
-    # Comment trigger phrase
-    comment-trigger: # optional, default is /changelog:
-    # Skip processing for dependabot PRs
-    skip-dependabot: # optional, default is true
-          
 name: Mise PR
 
 on:
@@ -22,7 +6,7 @@ on:
 
 permissions:
   contents: read
-  pull-requests: read
+  pull-requests: write
   issues: write
 
 jobs:
@@ -33,45 +17,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: Generate review packet
-        uses: DeontewattsV1/mise-pr@v0.1.0
+        uses: ./
         with:
           base-ref: origin/${{ github.base_ref }}
           head-ref: HEAD
           fail-on: red
           comment: true
-            - name: .github/workflows/mise-pr.yml
-  # You may pin to the exact commit or the version.
-  # uses: Monorepo-Actions/config-for-actions@47b0824054f9eef4a5d1b2df11f4c76b9b0d9117
-  uses: Monorepo-Actions/config-for-actions@v1.0.0
-  with:
-    # The configuration files.
-    config_files: # default is .github/config-for-actions.yml
-                      - name: Cache
-  uses: actions/cache@v5.0.5
-  with:
-    # A list of files, directories, and wildcard patterns to cache and restore
-    path: 
-    # An explicit key for restoring and saving the cache
-    key: 
-    # An ordered multiline string listing the prefix-matched keys, that are used for restoring stale cache if no cache hit occurred for key. Note `cache-hit` returns false in this case.
-    restore-keys: # optional
-    # The chunk size used to split up large files during upload, in bytes
-    upload-chunk-size: # optional
-    # An optional boolean when enabled, allows windows runners to save or restore caches that can be restored or saved respectively on other platforms
-    enableCrossOsArchive: # optional, default is false
-    # Fail the workflow if cache entry is not found
-    fail-on-cache-miss: # optional, default is false
-    # Check if a cache entry exists for the given input(s) (key, restore-keys) without downloading the cache
-    lookup-only: # optional, default is false
-    # Run the post step to save the cache even if another step before fails
-    save-always: # optional, default is false
-                      - name: Template Continuous Following
-  # You may pin to the exact commit or the version.
-  # uses: dondakeshimo/tmpl-cf@73e44e51a07b41128937f1ddb15051462ce665cf
-  uses: dondakeshimo/tmpl-cf@v0.1.0
-  with:
-    # Path to the configuration JSON file
-    config-file: # optional, default is tmpl_cf.json
-    # GitHub personal access token
-    token: # optional, default is ${{ github.token }}
-          
