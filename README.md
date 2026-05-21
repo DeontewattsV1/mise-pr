@@ -56,7 +56,6 @@ That is the wedge: **review readiness before review judgment**.
 ## Quick Start
 
 Create `.github/workflows/mise-pr.yml` in the repository where you want to use Mise PR:
-
 ```yaml
 name: Mise PR
 
