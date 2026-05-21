@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="docs/assets/mise-pr-hero.svg" alt="Mise PR hero" width="900" />
+  <<img width="1254" height="489" alt="image" src="https://github.com/user-attachments/assets/6c1f1803-e812-43d4-9b67-40ebd475163d" />
+ />
 </p>
 
 <h1 align="center">Mise PR</h1>
@@ -124,6 +125,7 @@ risky_path_patterns:
   - migration
   - github/workflows
 ```
+<img width="1254" height="1254" alt="image" src="https://github.com/user-attachments/assets/8cb1cd2b-5060-4de5-8e24-b540b56460dc" />
 
 ## Architecture
 
