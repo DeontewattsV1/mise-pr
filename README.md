@@ -1,6 +1,5 @@
 <p align="center">
-  <<img width="1254" height="489" alt="image" src="https://github.com/user-attachments/assets/6c1f1803-e812-43d4-9b67-40ebd475163d" />
- />
+  <img width="1254" height="489" alt="image" src="https://github.com/user-attachments/assets/6c1f1803-e812-43d4-9b67-40ebd475163d" />
 </p>
 
 <h1 align="center">Mise PR</h1>
@@ -12,7 +11,7 @@
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-green"></a>
 </p>
 
---
+---
 
 <br/>
 
@@ -30,8 +29,6 @@
 [![thanks.dev](https://img.shields.io/badge/thanks.dev-Say%20Thanks-3DA639?logo=github&logoColor=white)](https://thanks.dev/e/gh/deontewattsv1)
 
 </div>
-
-</details>
 
 ## What is Mise PR?
 
@@ -128,7 +125,7 @@ risky_path_patterns:
 
 ## Architecture
 
-Mise PR runs inside GitHub Actions. It reads local git metadata and the pull request event payload, scores review readiness, then writes Markdown and JSON outputs. No LLM is required. No source code is sent to an external service by default.
+Mise PR runs inside GitHub Actions. It reads local git metadata and the pull request event payload, scores review readiness, then writes Markdown and JSON outputs. No LLM is required. No source code is transmitted by default.
 
 ## Marketplace
 
