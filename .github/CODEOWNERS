@@ -1,0 +1,14 @@
+# Default owners for everything in the repo
+* @DeontewattsV1
+
+# GitHub Actions
+/.github/workflows/ @DeontewattsV1
+
+# Python code
+/mise_pr/ @DeontewattsV1
+
+# Documentation
+/docs/ @DeontewattsV1
+
+# Tests
+/tests/ @DeontewattsV1
