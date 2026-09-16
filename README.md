@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="1254" height="489" alt="image" src="https://github.com/user-attachments/assets/6c1f1803-e812-43d4-9b67-40ebd475163d" />
+  <img width="1600" height="480" alt="Mise PR — review readiness before code review" src="docs/assets/product/readme-hero.svg" />
 </p>
 
 <h1 align="center">Mise PR</h1>
@@ -20,7 +20,7 @@
 [![Patreon](https://img.shields.io/badge/Patreon-Donate-FF424D?logo=patreon&logoColor=white)](https://www.patreon.com/cw/GetitD)
 [![Open Collective](https://img.shields.io/badge/Open%20Collective-Support-FF6F00?logo=open-collective&logoColor=white)](https://opencollective.com/deontewattsv1)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Coffee-29ABE0?logo=ko-fi&logoColor=white)](https://ko-fi.com/deontewattsv1)
-[![Tidelift](https://img.shields.io/badge/Tidelift-Support-0052A7?logo=tidelift&logoColor=white)](https://sonarcloud.io/organizations/deontewattsv1/)
+[![Tidelift](https://img.shields.io/badge/Tidelift-Support-0052A7?logo=tidelift)](https://sonarcloud.io/organizations/deontewattsv1/)
 [![LFX Crowdfunding](https://img.shields.io/badge/LFX-Crowdfunding-2B6CB0)](https://crowdfunding.lfx.linuxfoundation.org/deontewattssV1)
 [![Liberapay](https://img.shields.io/badge/Liberapay-Donate-1D9D74?logo=liberapay&logoColor=white)](https://liberapay.com/DeontewattsV1/)
 [![IssueHunt](https://img.shields.io/badge/IssueHunt-Bounties-24292E?logo=github&logoColor=white)](https://issuehunt.io/profiles/deontewattsv1)
@@ -135,10 +135,17 @@ GitHub Marketplace publishing requires a GitHub Release where the owner selects 
 
 ## Launch assets
 
-The full Product Hunt launch kit, gallery images, demo GIF, copy, and expanded visuals are included in the downloadable v4 package.
+The versioned visual system now lives with the source code and is packaged automatically for releases.
 
+- README hero: [`docs/assets/product/readme-hero.svg`](docs/assets/product/readme-hero.svg)
+- 16:9 launch graphic: [`docs/assets/product/launch-16x9.svg`](docs/assets/product/launch-16x9.svg)
+- Interactive CodeArt trace demo: [`docs/assets/product/codeart-demo.html`](docs/assets/product/codeart-demo.html)
+- Asset manifest: [`docs/assets/product/manifest.json`](docs/assets/product/manifest.json)
+- Release packager: [`.github/workflows/release-visual-assets.yml`](.github/workflows/release-visual-assets.yml)
 - Marketplace listing: [`docs/marketplace/MARKETPLACE_LISTING.md`](docs/marketplace/MARKETPLACE_LISTING.md)
 - Release notes: [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md)
+
+On every published GitHub Release, the visual workflow renders PNG copies from the SVG masters, creates ZIP and TAR bundles, generates `SHA256SUMS`, and attaches the bundles to the release. Manual workflow runs preserve the same package as a GitHub Actions artifact without publishing a release.
 
 ## License
 
