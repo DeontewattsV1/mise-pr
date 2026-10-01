@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" role="img" aria-label="Mise PR visual system hero">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050914"/><stop offset=".5" stop-color="#0A1530"/><stop offset="1" stop-color="#07101B"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#39F3FF" stop-opacity=".32"/><stop offset="1" stop-color="#6D5DFF" stop-opacity="0"/></radialGradient>
+ <linearGradient id="glass" x1="0" x2="1"><stop stop-color="#FFFFFF" stop-opacity=".13"/><stop offset="1" stop-color="#6D5DFF" stop-opacity=".07"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#6EA9FF" stroke-opacity=".08"/></pattern>
+</defs>
+<rect width="1600" height="480" fill="url(#bg)"/><rect width="1600" height="480" fill="url(#grid)"/>
+<circle cx="1280" cy="210" r="210" fill="url(#halo)" filter="url(#glow)"/>
+<path d="M0 393C400 326 800 456 1600 345V480H0Z" fill="#0A1326" opacity=".9"/>
+<g transform="translate(1040 86)"><rect width="128" height="128" rx="18" fill="url(#glass)" stroke="#39F3FF" stroke-opacity=".55"/><path d="M0 64L64 0l64 64-64 64Z" fill="none" stroke="#6D5DFF" stroke-width="3" opacity=".7"/></g>
+<g transform="translate(1150 126) rotate(8 64 64)"><rect width="128" height="128" rx="18" fill="url(#glass)" stroke="#39F3FF" stroke-opacity=".55"/><path d="M0 64L64 0l64 64-64 64Z" fill="none" stroke="#6D5DFF" stroke-width="3" opacity=".7"/></g>
+<g transform="translate(1260 86) rotate(16 64 64)"><rect width="128" height="128" rx="18" fill="url(#glass)" stroke="#39F3FF" stroke-opacity=".55"/><path d="M0 64L64 0l64 64-64 64Z" fill="none" stroke="#6D5DFF" stroke-width="3" opacity=".7"/></g>
+<g fill="#39F3FF" opacity=".35"> <rect x="1040" y="330" width="26" height="26" rx="4"/><rect x="1080" y="330" width="26" height="26" rx="4"/><rect x="1120" y="330" width="26" height="26" rx="4"/><rect x="1160" y="330" width="26" height="26" rx="4"/><rect x="1200" y="330" width="26" height="26" rx="4"/><rect x="1240" y="330" width="26" height="26" rx="4"/><rect x="1280" y="330" width="26" height="26" rx="4"/><rect x="1320" y="330" width="26" height="26" rx="4"/></g>
+<circle cx="1270" cy="220" r="62" fill="#0A1730" stroke="#39F3FF" stroke-width="5" filter="url(#glow)"/><circle cx="1270" cy="220" r="44" fill="none" stroke="#6D5DFF" stroke-width="3" stroke-dasharray="12 10"/><text x="1270" y="232" text-anchor="middle" font-family="Space Mono,monospace" font-weight="700" font-size="40" fill="#fff">PR</text>
+<text x="112" y="72" font-family="Space Mono,monospace" font-size="27" letter-spacing="4" fill="#39F3FF">REVIEW READINESS BEFORE CODE REVIEW</text>
+<text x="112" y="220" font-family="Sora,Arial" font-size="100" font-weight="800" fill="#fff" filter="url(#glow)">Mise PR</text>
+<text x="112" y="288" font-family="Inter,Arial" font-size="36" fill="#D8E9FF">Turn messy pull requests into review-ready packets.</text>
+<g transform="translate(112 366)"><rect width="560" height="48" rx="20" fill="url(#glass)" stroke="#39F3FF" stroke-opacity=".7"/><text x="30" y="31" font-family="Space Mono,monospace" font-size="22" fill="#fff">GitHub Marketplace  •  Product Hunt  •  PyPI</text></g>
+<text x="112" y="456" font-family="Space Mono,monospace" font-size="16" fill="#8FA7C8">GOODSHYT / MISEOS  ·  BUILD • TRACE • VERIFY • SHIP</text>
+</svg>
