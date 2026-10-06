@@ -7,18 +7,49 @@
     "tagline": "Turn messy pull requests into review-ready packets.",
     "accent": "#39F3FF",
     "accent2": "#6D5DFF",
-    "channels": ["GitHub Marketplace", "Product Hunt", "PyPI"]
+    "channels": [
+      "GitHub Marketplace",
+      "Product Hunt",
+      "PyPI"
+    ]
   },
   "source_assets": [
-    {"name": "readme-hero", "path": "docs/assets/product/readme-hero.svg", "width": 1600, "height": 480},
-    {"name": "launch-16x9", "path": "docs/assets/product/launch-16x9.svg", "width": 1600, "height": 900},
-    {"name": "codeart-demo", "path": "docs/assets/product/codeart-demo.html", "type": "interactive-html"}
+    {
+      "name": "readme-hero",
+      "path": "docs/assets/product/readme-hero.svg",
+      "width": 1600,
+      "height": 480
+    },
+    {
+      "name": "launch-16x9",
+      "path": "docs/assets/product/launch-16x9.svg",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "name": "codeart-demo",
+      "path": "docs/assets/product/codeart-demo.html",
+      "type": "interactive-html"
+    }
   ],
   "release_pipeline": {
     "workflow": ".github/workflows/release-visual-assets.yml",
-    "renders": ["svg", "png"],
-    "archives": ["zip", "tar.gz"],
+    "renders": [
+      "svg",
+      "png"
+    ],
+    "archives": [
+      "zip",
+      "tar.gz"
+    ],
     "checksums": "SHA256SUMS",
-    "attach_on": "release.published"
+    "attach_on": [
+      "release.published",
+      "workflow_dispatch.release_tag"
+    ],
+    "manual_dispatch": {
+      "blank": "artifact-only",
+      "release_tag": "validate existing release, check out the exact tag, and attach generated bundles"
+    }
   }
 }
