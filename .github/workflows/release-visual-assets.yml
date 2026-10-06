@@ -4,6 +4,11 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing GitHub Release tag to backfill. Leave blank to package only.
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -65,7 +70,7 @@ jobs:
 
   attach-release:
     timeout-minutes: 10
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || inputs.release_tag != ''
     needs: package-visuals
     runs-on: ubuntu-latest
     permissions:
@@ -77,10 +82,11 @@ jobs:
           name: visual-release-assets
           path: dist
 
-      - name: Attach bundle to published GitHub Release
+      - name: Attach bundle to GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.release_tag }}
         run: |
           set -euo pipefail
+          gh release view "${RELEASE_TAG}" >/dev/null
           gh release upload "${RELEASE_TAG}"             dist/*-visual-assets.zip             dist/*-visual-assets.tar.gz             --clobber
