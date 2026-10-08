@@ -8,7 +8,7 @@ Cubic is a review-intelligence layer beneath repository policy, tests, CI, secur
 - PR comments/review loops: authenticate GitHub CLI and work from a local checkout.
 - Wiki, codebase scans, review learnings: connect Cubic's MCP server with OAuth for an account that can access this repository.
 - Install Codex skills with:
-  `npx @cubic-plugin/cubic-plugin install --to codex --skills-only`
+  `npx @cubic-plugin/cubic-plugin@1.5.0 install --to codex --skills-only`
 
 The skills-only installer intentionally leaves MCP configuration unchanged.
 
