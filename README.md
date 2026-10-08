@@ -145,7 +145,7 @@ The versioned visual system now lives with the source code and is packaged autom
 - Marketplace listing: [`docs/marketplace/MARKETPLACE_LISTING.md`](docs/marketplace/MARKETPLACE_LISTING.md)
 - Release notes: [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md)
 
-Published GitHub Releases automatically receive rendered PNG copies of the SVG masters, `SHA256SUMS`, and ZIP/TAR visual bundles. A manual dispatch with a blank `release_tag` is package-only and preserves the same bundles as a GitHub Actions artifact. To backfill an existing release, enter its exact tag; the workflow validates that release, checks out the tag, builds from that historical revision, and attaches the generated visual bundles.
+Published GitHub Releases automatically receive ZIP/TAR visual bundles containing rendered PNG copies of the SVG masters and `SHA256SUMS`. A manual dispatch with a blank `release_tag` is package-only and preserves the same bundles as a GitHub Actions artifact. To backfill an existing release, enter its exact tag; the workflow validates that release, checks out the tag, builds from that historical revision, and attaches the generated visual bundles.
 
 ## License
 
