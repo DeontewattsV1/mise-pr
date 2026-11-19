@@ -3,12 +3,6 @@ name: Package visual release assets
 on:
   release:
     types: [published]
-  workflow_dispatch:
-    inputs:
-      release_tag:
-        description: Existing GitHub Release tag to backfill. Leave blank to package only.
-        required: false
-        type: string
 
 permissions:
   contents: read
